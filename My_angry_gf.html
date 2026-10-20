@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Ritu Gautam ✨</title>
+    <!-- Tailwind CSS -->
+    <script src="https://jsdelivr.net"></script>
+    <!-- Alpine.js for complex interactive states -->
+    <script defer src="https://jsdelivr.net"></script>
+    <!-- Animate.css for entrance animations -->
+    <link rel="stylesheet" href="https://cloudflare.com"/>
+    
+    <style>
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(-20vh) scale(1.2); opacity: 0; }
+        }
+        .floating-art {
+            position: absolute;
+            bottom: -10%;
+            animation: floatUp 8s linear infinite;
+            pointer-events: none;
+        }
+        /* Digital Artwork: Glowing Heart Pulse */
+        .art-pulse {
+            animation: pulseGlow 2s ease-in-out infinite alternate;
+        }
+        @keyframes pulseGlow {
+            0% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(244, 63, 94, 0.6)); }
+            100% { transform: scale(1.08); filter: drop-shadow(0 0 25px rgba(244, 63, 94, 0.9)); }
+        }
+        /* Custom Gradient Text */
+        .gradient-text {
+            background: linear-gradient(45deg, #f43f5e, #ec4899, #d946ef);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-900 via-rose-950 to-indigo-950 min-h-screen flex items-center justify-center font-sans overflow-hidden relative" 
+      x-data="{ forgiven: false, arts: [], activeTab: 1 }">
+
+    <!-- Interactive Digital Ambient Background Layer -->
+    <div class="absolute inset-0 overflow-hidden z-0 bg-opacity-40">
+        <template x-for="(art, index) in arts" :key="index">
+            <div class="floating-art text-3xl opacity-0"
+                 :style="`left: ${art.left}%; animation-delay: ${art.delay}s; animation-duration: ${art.duration}s;`"
+                 x-text="art.icon"></div>
+        </template>
+    </div>
+
+    <!-- Main Dynamic Glassmorphism Container -->
+    <main class="relative z-10 w-full max-w-lg mx-4 bg-white/10 backdrop-blur-xl rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.3)] border border-white/20 p-6 md:p-8 text-center text-white transition-all duration-500 animate__animated animate__fadeInUp"
+          x-init="
+            const icons = ['🌸', '✨', '💖', '👑', '🧸', '🎀', '💫'];
+            for(let i=0; i<25; i++) {
+                arts.push({
+                    left: Math.random() * 100,
+                    delay: Math.random() * 7,
+                    duration: 6 + Math.random() * 6,
+                    icon: icons[Math.floor(Math.random() * icons.length)]
+                });
+            }
+          ">
+
+        <!-- DIGITAL ARTWORK: Interactive Heart Jar Frame -->
+        <div class="relative w-40 h-40 mx-auto mb-6 flex items-center justify-center bg-white/5 rounded-2xl border border-white/10 shadow-inner overflow-hidden">
+            <!-- Constellation Glow background -->
+            <div class="absolute inset-0 bg-radial from-rose-500/20 to-transparent animate-pulse"></div>
+            
+            <!-- Central Digital Artwork: Vector Glowing Heart -->
+            <svg class="w-24 h-24 art-pulse cursor-pointer relative z-10" viewBox="0 0 24 24" fill="url(#roseGradient)" @click="
+                arts.push({ left: Math.random() * 100, delay: 0, duration: 4, icon: '💖' });
+            ">
+                <defs>
+                    <linearGradient id="roseGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#fda4af" />
+                        <stop offset="50%" stop-color="#f43f5e" />
+                        <stop offset="100%" stop-color="#9f1239" />
+                    </linearGradient>
+                </defs>
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.5 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+            
+            <!-- Sparkles orbiting the heart artwork -->
+            <div class="absolute top-4 left-6 animate-bounce text-sm">✨</div>
+            <div class="absolute bottom-6 right-6 animate-ping text-xs">🌸</div>
+            <div class="absolute top-8 right-6 animate-pulse text-sm">💫</div>
+        </div>
+
+        <!-- Personalised Animated Heading -->
+        <h1 class="text-3xl md:text-4xl font-black mb-4 tracking-tight">
+            Hello, <span class="gradient-text drop-shadow-[0_2px_10px_rgba(244,63,94,0.3)]">Ritu Gautam</span> ✨
+        </h1>
+
+        <!-- Content Toggle based on Status -->
+        <div x-show="!forgiven" class="space-y-6">
+            
+            <!-- Interactive Gallery / Tab System to build joy -->
+            <div class="bg-white/5 rounded-2xl p-4 border border-white/10 text-left min-h-[120px]">
+                <div x-show="activeTab === 1" class="animate__animated animate__fadeIn">
+                    <span class="text-xs uppercase font-bold tracking-wider text-rose-400">💡 Reality Check</span>
+                    <p class="text-slate-200 mt-1 text-sm md:text-base leading-relaxed">
+                        The world loses half its brightness when you are mad at me. Your smile is literally the prettiest thing ever, and missing it sucks big time. 🥺
+                    </p>
+                </div>
+                <div x-show="activeTab === 2" class="animate__animated animate__fadeIn">
+                    <span class="text-xs uppercase font-bold tracking-wider text-pink-400">🧸 Little Reminder</span>
+                    <p class="text-slate-200 mt-1 text-sm md:text-base leading-relaxed">
+                        I promise to be a better listener, a better partner, and your biggest source of happiness. Let's trade the quiet mood for happy vibes? 🍕
+                    </p>
+                </div>
+            </div>
+
+            <!-- Tab Buttons -->
+            <div class="flex justify-center gap-2">
+                <button @click="activeTab = 1" :class="activeTab === 1 ? 'bg-rose-500 text-white' : 'bg-white/10 text-slate-300'" class="px-3 py-1 text-xs font-semibold rounded-full transition-all duration-300 cursor-pointer">Why I Miss You</button>
+                <button @click="activeTab = 2" :class="activeTab === 2 ? 'bg-rose-500 text-white' : 'bg-white/10 text-slate-300'" class="px-3 py-1 text-xs font-semibold rounded-full transition-all duration-300 cursor-pointer">My Promise</button>
+            </div>
+
+            <!-- Main Interactive Forgiveness Button -->
+            <div class="pt-2">
+                <button @click="forgiven = true; 
+                                for(let i=0; i<30; i++) { 
+                                    arts.push({ left: Math.random()*100, delay: Math.random()*2, duration: 3+Math.random()*3, icon: '🌸' }) 
+                                }" 
+                        class="w-full relative group bg-gradient-to-r from-rose-500 via-pink-500 to-fuchsia-500 text-white font-bold py-4 px-6 rounded-2xl shadow-[0_4px_20px_rgba(244,63,94,0.4)] hover:shadow-[0_4px_30px_rgba(244,63,94,0.7)] transition-all duration-300 transform hover:-translate-y-0.5 active:scale-95 cursor-pointer text-lg overflow-hidden">
+                    <span class="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></span>
+                    <span class="relative z-10 flex items-center justify-center gap-2">
+                        Click to Forgive Me & Smile 🌸
+                    </span>
+                </button>
+            </div>
+        </div>
+
+        <!-- CELEBRATION STATE (Triggers Digital Burst of Art & Joy) -->
+        <div x-show="forgiven" class="space-y-6 animate__animated animate__zoomIn">
+            <div class="text-6xl animate-bounce my-2">🎉🥰👑</div>
+            <h2 class="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-emerald-400 to-cyan-400">
+                Mission Accomplished! 💖
+            </h2>
+            <p class="text-slate-200 font-medium leading-relaxed">
+                Thank you for being the sweetest, Ritu Gautam. Your forgiveness means everything. Now close this screen, open your messages, and let's go get your favorite food! 🍦✨
+            </p>
+            
+            <div class="p-4 bg-white/5 rounded-2xl border border-emerald-500/30 text-emerald-300 text-xs font-mono uppercase tracking-widest animate-pulse">
+                💖 Infinite Hugs & Smiles Unlocked 💖
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="mt-8 pt-4 border-t border-white/10 text-xs text-slate-400 tracking-wider">
+            Exclusively created with love for Ritu
+        </footer>
+    </main>
+
+</body>
+</html>
